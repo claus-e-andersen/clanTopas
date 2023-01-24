@@ -25,6 +25,29 @@ scorer.names <- stringr::str_replace(scorer.names,"Histories_with_Scorer_Active"
 return(scorer.names)
 }
 
+#' @read.topas.phasespace
+#' @description
+#' Reading Topas phasespace file (header+phsp)
+#'@details
+#' This function can use the main information from the header file.
+#'
+#' @param MeV = electron kinetic energy
+#' @param dat = list with parameters (both input and output)
+#' @param dat$Z = atomic number
+#' @param dat$A = atomic mass
+#' @param dat$I = mean excitation energy in eV
+#' @param dat$rho.density = density in g/cm3 (only used for the delta computation)
+#' @param dat$fvec = sub-shell occupancy level (used in computation)
+#' @param dat$Evec = sub-shell binding energy (used in computation)
+#
+#' @param dat$plot.wanted = TRUE or FALSE,
+#' @param mu.solver.parm = search parameters for the mu.st solver
+#' @param L.solver.parm = search parameters for the L solver
+#' @param dat$nlev = number of sub-shells (output)
+#' @param dat$exact.delta = the computed delta (output)
+#' @return a list (dat)
+#'
+#' @export
 #######################################################################################################
 # read.phasespace
 #######################################################################################################
@@ -210,7 +233,7 @@ read.topas.xyz <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1",what
     xx <- strsplit(header.last.line,":")[[1]][2]
 #    xx <- " Count_in_Bin   Sum   Mean   Standard_Deviation   "
     xx <- clanTools::trim.whitespace(xx)
-    xx <- str_split(xx, " ")[[1]]
+    xx <- stringr::str_split(xx, " ")[[1]]
     ok <- !xx==""
     xx <- xx[ok]
     xx
@@ -327,14 +350,14 @@ read.topas.spectrum <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1"
     label <- clanTools::trim.whitespace(label)
 
     # Format of header.bins.line: Binned by pre-step energy in 2000 bins of 0.01 MeV from 0 MeV to 20 MeV"
-    N.bins <- extract.given.number(header.bins.line,1)
-    E.min  <- extract.given.number(header.bins.line,3)
-    E.max  <- extract.given.number(header.bins.line,4)
+    N.bins <- clanTools::extract.given.number(header.bins.line,1)
+    E.min  <- clanTools::extract.given.number(header.bins.line,3)
+    E.max  <- clanTools::extract.given.number(header.bins.line,4)
 
 
     xx <- strsplit(header.label.line,":")[[1]][2]
     xx <- clanTools::trim.whitespace(xx)
-    xx <- str_split(xx, " ")[[1]]
+    xx <- stringr::str_split(xx, " ")[[1]]
     ok <- !xx==""
     xx <- xx[ok]
     xx
