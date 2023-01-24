@@ -1,7 +1,7 @@
 # clanTopas
 R package for Topas (TopasMC.org)
 
-Main functions for readong scorer files produced by Topas
+Main functions for reading scorer files produced by Topas
 ```
 read.topas.xyz
 read.topas.spectrum
