@@ -14,7 +14,7 @@ library(clanTopas)
 You will also need the clanTools package:
 
 ```
-install_github("claus-e-andersen/clanTolls")
+install_github("claus-e-andersen/clanTools")
 ```
 
 plus the stringr and dplyr packages.
