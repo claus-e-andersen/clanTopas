@@ -11,7 +11,10 @@ library(devtools)
 install_github("claus-e-andersen/clanTopas")
 library(clanTopas)
 ```
-You will also need the clanTools package, dplyr, and stringr.
+You will also need the clanTools package:
 
 ```
 install_github("claus-e-andersen/clanTolls")
+```
+
+plus the stringr and dplyr packages.
