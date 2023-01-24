@@ -2,6 +2,8 @@ require(clanTools)
 require(dplyr)
 require(stringr)
 
+# January 24, 2023
+
 #install.packages("devtools")
 #library(devtools)
 #install_github("claus-e-andersen/clanTools")
