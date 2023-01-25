@@ -29,23 +29,18 @@ return(scorer.names)
 #' @description
 #' Reading Topas phasespace file (header+phsp)
 #'@details
-#' This function can use the main information from the header file.
+#' This function can extract the main information from the header file.
 #'
-#' @param MeV = electron kinetic energy
-#' @param dat = list with parameters (both input and output)
-#' @param dat$Z = atomic number
-#' @param dat$A = atomic mass
-#' @param dat$I = mean excitation energy in eV
-#' @param dat$rho.density = density in g/cm3 (only used for the delta computation)
-#' @param dat$fvec = sub-shell occupancy level (used in computation)
-#' @param dat$Evec = sub-shell binding energy (used in computation)
-#
-#' @param dat$plot.wanted = TRUE or FALSE,
-#' @param mu.solver.parm = search parameters for the mu.st solver
-#' @param L.solver.parm = search parameters for the L solver
-#' @param dat$nlev = number of sub-shells (output)
-#' @param dat$exact.delta = the computed delta (output)
-#' @return a list (dat)
+#' @param pn.full = Path to folder where scorer can be found
+#' @param fn.main = First part of scorer filename.
+#' @param fn.scorer = Last part of scorer filename (typically the name of the scorer).
+#' @param what = Meta data like "Fluence of electrons".
+#' @param what2 = Meta data (supplement to what).
+#' @param get.col.names.from.header = If TRUE, extract names of fields from file header.
+#' @param number.of.columns = If get.col.names.from.header == FALSE, you will need to define the number of fields in the file.
+#' @param include.meta.data =If TRUE, include the meta data (what, what2 + filename info) in returned dataframe.
+#' @param verbose = TRUE or FALSE,
+#' @return a dataframe with scorer data included meta data, if requested.
 #'
 #' @export
 #######################################################################################################
@@ -176,28 +171,26 @@ print(paste("Header file name = ",fn.header))
 #'@details
 #' This function can use the main information from the header file.
 #'
-#' @param MeV = electron kinetic energy
-#' @param dat = list with parameters (both input and output)
-#' @param dat$Z = atomic number
-#' @param dat$A = atomic mass
-#' @param dat$I = mean excitation energy in eV
-#' @param dat$rho.density = density in g/cm3 (only used for the delta computation)
-#' @param dat$fvec = sub-shell occupancy level (used in computation)
-#' @param dat$Evec = sub-shell binding energy (used in computation)
-#
-#' @param dat$plot.wanted = TRUE or FALSE,
-#' @param mu.solver.parm = search parameters for the mu.st solver
-#' @param L.solver.parm = search parameters for the L solver
-#' @param dat$nlev = number of sub-shells (output)
-#' @param dat$exact.delta = the computed delta (output)
-#' @return a list (dat)
-#'
+#' @param pn.full = Path to folder where scorer can be found
+#' @param fn.main = First part of scorer filename.
+#' @param fn.scorer = Last part of scorer filename (typically the name of the scorer).
+#' @param what = Meta data like "Fluence of electrons".
+#' @param what2 = Meta data (supplement to what).
+#' @param get.col.names.from.header = If TRUE, extract names of fields from file header.
+#' @param extra.col.names.pre = Names of fields in the scorer file occuring BEFORE the main data (e.g. c("x","y","z") for binned data.
+#' @param extra.col.names.post = Names of fields in the scorer file occuring AFTER the main data.
+#' @param scorer.names.default = If get.col.names.from.header == FALSE, you will need to provide field names (e.g. c("Count_in_Bin","Mean","Sum"),)
+#' @param include.meta.data =If TRUE, include the meta data (what, what2 + filename info) in returned dataframe.
+#' @param verbose = TRUE or FALSE,
+#' @return a dataframe with scorer data included meta data, if requested.
 #' @export
 #######################################################################################################
 # read.topas.xyz
 #######################################################################################################
 read.topas.xyz <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1",what="Dose",what2="Dose",
                            get.col.names.from.header=TRUE,
+                           extra.col.names.pre=c("x","y","z"),
+                           extra.col.names.post=NULL,
                            scorer.names.default =c("Count_in_Bin","Mean","Sum"),
                            include.meta.data=TRUE, verbose=FALSE){
   # Read Topas simple scorer file (xyz, no time resolution)
@@ -243,7 +236,10 @@ read.topas.xyz <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1",what
   print("Last line:")
   print(txt[N.skip])
   label <- "Void"
-  scorer.names <- c("x","y","z",scorer.names.default)
+
+  if(is.null(extra.col.names.pre)){extra.col.names.pre <- character(0L)}
+  if(is.null(extra.col.names.post)){extra.col.names.post <- character(0L)}
+  scorer.names <- c(extra.col.names.pre,scorer.names.default,extra.col.names.post)
 
   if(get.col.names.from.header){
     header.txt <- txt[1:N.skip]
@@ -260,13 +256,12 @@ read.topas.xyz <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1",what
     ok <- !xx==""
     xx <- xx[ok]
     xx
-    scorer.names <- c("x","y","z",xx)
-
+    scorer.names <- c(extra.col.names.pre,xx,extra.col.names.post)
     scorer.names <- scorer.names.simplify(scorer.names)
 
     if(verbose){
       print("-------------------------------")
-      print("Identified column names from header:")
+      print("Identified column names from header + requested pre/post columns:")
       print(paste(1:length(scorer.names),"=",scorer.names,collapse="   "))
       print("-------------------------------")
     }#verbose
@@ -303,28 +298,54 @@ read.topas.xyz <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1",what
 
 
 
+#' read.topas.simple
+#' @description
+#' Reading simple Topas scorer file (i.e. no xyz binning etc.)
+#'@details
+#' This function can use the main information from the header file.
+#'
+#' @param pn.full = Path to folder where scorer can be found
+#' @param fn.main = First part of scorer filename.
+#' @param fn.scorer = Last part of scorer filename (typically the name of the scorer).
+#' @param what = Meta data like "Fluence of electrons".
+#' @param what2 = Meta data (supplement to what).
+#' @param get.col.names.from.header = If TRUE, extract names of fields from file header.
+#' @param scorer.names.default = If get.col.names.from.header == FALSE, you will need to provide field names (e.g. c("Count_in_Bin","Mean","Sum"),)
+#' @param include.meta.data =If TRUE, include the meta data (what, what2 + filename info) in returned dataframe.
+#' @param verbose = TRUE or FALSE,
+#' @return a dataframe with scorer data included meta data, if requested.
+#' @export
+#######################################################################################################
+# read.topas.simple
+#######################################################################################################
+read.topas.simple <- function(...){
+  print("ByeBye from read.topas.simple")
+  # No extra.col.names.pre or .post. Otherwise, read.topas.simple = read.topas.xyz.
+  df <- read.topas.xyz(...,extra.col.names.pre=NULL,extra.col.names.post=NULL)
+  print("ByeBye from read.topas.simple")
+  return(df)
+}
+#######################################################################################################
+# END read.topas.simple
+#######################################################################################################
+
+
 #' read.topas.spectrum
 #' @description
 #' Reading Topas spectrum file (e.g. fluence spectra)
 #'@details
 #' This function can use the main information from the header file.
 #'
-#' @param MeV = electron kinetic energy
-#' @param dat = list with parameters (both input and output)
-#' @param dat$Z = atomic number
-#' @param dat$A = atomic mass
-#' @param dat$I = mean excitation energy in eV
-#' @param dat$rho.density = density in g/cm3 (only used for the delta computation)
-#' @param dat$fvec = sub-shell occupancy level (used in computation)
-#' @param dat$Evec = sub-shell binding energy (used in computation)
-#
-#' @param dat$plot.wanted = TRUE or FALSE,
-#' @param mu.solver.parm = search parameters for the mu.st solver
-#' @param L.solver.parm = search parameters for the L solver
-#' @param dat$nlev = number of sub-shells (output)
-#' @param dat$exact.delta = the computed delta (output)
-#' @return a list (dat)
-#'
+#' @param pn.full = Path to folder where scorer can be found
+#' @param fn.main = First part of scorer filename.
+#' @param fn.scorer = Last part of scorer filename (typically the name of the scorer).
+#' @param what = Meta data like "Fluence of electrons".
+#' @param what2 = Meta data (supplement to what).
+#' @param get.col.names.from.header = If TRUE, extract names of fields from file header.
+#' @param scorer.names.default = If get.col.names.from.header == FALSE, you will need to provide field names (e.g. c("Count_in_Bin","Mean","Sum"),)
+#' @param include.meta.data =If TRUE, include the meta data (what, what2 + filename info) in returned dataframe.
+#' @param verbose = TRUE or FALSE,
+#' @return a dataframe with scorer data included meta data, if requested.
 #' @export
 #######################################################################################################
 # read.topas.spectrum
@@ -478,23 +499,11 @@ read.topas.spectrum <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1"
 #' Demonstration of the read.topas functions
 #'
 #'@details
-#' This function can use the main information from the header file.
+#' This function contains demonstration of the functions in clanTopas.
+#' See function body.
 #'
-#' @param MeV = electron kinetic energy
-#' @param dat = list with parameters (both input and output)
-#' @param dat$Z = atomic number
-#' @param dat$A = atomic mass
-#' @param dat$I = mean excitation energy in eV
-#' @param dat$rho.density = density in g/cm3 (only used for the delta computation)
-#' @param dat$fvec = sub-shell occupancy level (used in computation)
-#' @param dat$Evec = sub-shell binding energy (used in computation)
-#
-#' @param dat$plot.wanted = TRUE or FALSE,
-#' @param mu.solver.parm = search parameters for the mu.st solver
-#' @param L.solver.parm = search parameters for the L solver
-#' @param dat$nlev = number of sub-shells (output)
-#' @param dat$exact.delta = the computed delta (output)
-#' @return a list (dat)
+#'
+#' @return Text message
 #'
 #' @export
 
@@ -563,6 +572,10 @@ df1 <-read.topas.xyz(pn.full=pn.full,
                      what="Dose",
                      what2="Dose",
                      get.col.names.from.header=TRUE,
+                     extra.col.names.pre=c("x","y","z"),
+                     extra.col.names.post=NULL,
                      include.meta.data=TRUE,
                      verbose=FALSE)
+
+return("This function contains demonstration of the functions in clanTopas. See function body! ByeBye from read.topas.demo.")
 } # clanTopasDemo

@@ -17,34 +17,26 @@ read.topas.spectrum(
 )
 }
 \arguments{
-\item{MeV}{= electron kinetic energy}
+\item{pn.full}{= Path to folder where scorer can be found}
 
-\item{dat}{= list with parameters (both input and output)}
+\item{fn.main}{= First part of scorer filename.}
 
-\item{dat$Z}{= atomic number}
+\item{fn.scorer}{= Last part of scorer filename (typically the name of the scorer).}
 
-\item{dat$A}{= atomic mass}
+\item{what}{= Meta data like "Fluence of electrons".}
 
-\item{dat$I}{= mean excitation energy in eV}
+\item{what2}{= Meta data (supplement to what).}
 
-\item{dat$rho.density}{= density in g/cm3 (only used for the delta computation)}
+\item{get.col.names.from.header}{= If TRUE, extract names of fields from file header.}
 
-\item{dat$fvec}{= sub-shell occupancy level (used in computation)}
+\item{scorer.names.default}{= If get.col.names.from.header == FALSE, you will need to provide field names (e.g. c("Count_in_Bin","Mean","Sum"),)}
 
-\item{dat$Evec}{= sub-shell binding energy (used in computation)}
+\item{include.meta.data}{=If TRUE, include the meta data (what, what2 + filename info) in returned dataframe.}
 
-\item{dat$plot.wanted}{= TRUE or FALSE,}
-
-\item{mu.solver.parm}{= search parameters for the mu.st solver}
-
-\item{L.solver.parm}{= search parameters for the L solver}
-
-\item{dat$nlev}{= number of sub-shells (output)}
-
-\item{dat$exact.delta}{= the computed delta (output)}
+\item{verbose}{= TRUE or FALSE,}
 }
 \value{
-a list (dat)
+a dataframe with scorer data included meta data, if requested.
 }
 \description{
 Reading Topas spectrum file (e.g. fluence spectra)

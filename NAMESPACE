@@ -2,5 +2,6 @@
 
 export(read.topas.demo)
 export(read.topas.phasespace)
+export(read.topas.simple)
 export(read.topas.spectrum)
 export(read.topas.xyz)
