@@ -473,8 +473,32 @@ read.topas.spectrum <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1"
 #######################################################################################################
 
 
+#' read.topas.demo
+#' @description
+#' Demonstration of the read.topas functions
+#'
+#'@details
+#' This function can use the main information from the header file.
+#'
+#' @param MeV = electron kinetic energy
+#' @param dat = list with parameters (both input and output)
+#' @param dat$Z = atomic number
+#' @param dat$A = atomic mass
+#' @param dat$I = mean excitation energy in eV
+#' @param dat$rho.density = density in g/cm3 (only used for the delta computation)
+#' @param dat$fvec = sub-shell occupancy level (used in computation)
+#' @param dat$Evec = sub-shell binding energy (used in computation)
+#
+#' @param dat$plot.wanted = TRUE or FALSE,
+#' @param mu.solver.parm = search parameters for the mu.st solver
+#' @param L.solver.parm = search parameters for the L solver
+#' @param dat$nlev = number of sub-shells (output)
+#' @param dat$exact.delta = the computed delta (output)
+#' @return a list (dat)
+#'
+#' @export
 
-clanTopasDemo <- function(){
+read.topas.demo <- function(){
 
 ######################################################################
 pn.full <- "~//topas//examples//clan//Four-pi-detector//"
