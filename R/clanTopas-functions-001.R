@@ -25,7 +25,7 @@ scorer.names <- stringr::str_replace(scorer.names,"Histories_with_Scorer_Active"
 return(scorer.names)
 }
 
-#' @read.topas.phasespace
+#' read.topas.phasespace
 #' @description
 #' Reading Topas phasespace file (header+phsp)
 #'@details
@@ -170,7 +170,7 @@ print(paste("Header file name = ",fn.header))
 #######################################################################################################
 
 
-#' @read.topas.xyz
+#' read.topas.xyz
 #' @description
 #' Reading Topas scorer file (e.g. dose-to-medium or fluence vs. xyz)
 #'@details
@@ -303,7 +303,7 @@ read.topas.xyz <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1",what
 
 
 
-#' @read.topas.spectrum
+#' read.topas.spectrum
 #' @description
 #' Reading Topas spectrum file (e.g. fluence spectra)
 #'@details
