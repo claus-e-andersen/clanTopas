@@ -7,8 +7,8 @@ read.topas.simple (no binning)
 read.topas.xyz (for a binned scorer)
 read.topas.spectrum
 read.topas.phasespace
-Details of how to install the package is given at the end of this readme file.
 ```
+Details of how to install the clanTopa package is given at the end of this readme file.
 
 ## How to read a phasespace file?
 
@@ -32,7 +32,7 @@ df1 <-read.topas.xyz(pn.full=pn.full,
                      fn.main=fn.main,
                      fn.scorer="DoseScorer1",
                      what="Dose",
-                     what2="Dose")
+                     what2="Dose-to-medium")
 
 
 df2 <-read.topas.xyz(pn.full=pn.full,
