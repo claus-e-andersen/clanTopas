@@ -37,18 +37,18 @@ df <-read.topas.phasespace(pn.full,
 pn.full <- "~//topas//examples//clan//"
 fn.main <- "sandbox-10012-"
 
-df1 <-read.topas.xyz(pn.full,
-                     fn.main,
-                     fn.scorer="DoseScorer1",
-                     what="Dose",
-                     what2="Dose.at.isocenter")
+df1 <- read.topas.xyz(pn.full,
+                      fn.main,
+                      fn.scorer="DoseScorer1",
+                      what="Dose",
+                      what2="Dose.at.isocenter")
 
 
-df2 <-read.topas.xyz(pn.full,
-                     fn.main,
-                     fn.scorer="DoseScorer2",
-                     what="Dose",
-                     what2="Dose.at.10cm")
+df2 <- read.topas.xyz(pn.full,
+                      fn.main,
+                      fn.scorer="DoseScorer2",
+                      what="Dose",
+                      what2="Dose.at.10cm")
 
 df <- rbind(df1,df2)
 ```
@@ -59,7 +59,7 @@ df <- rbind(df1,df2)
 pn.full <- "~//topas//examples//clan//linac-spectra-Ali-and-Rogers//"
 fn.main <- "linac-spectra-test-10001-"
 
-df <-read.topas.spectrum(pn.full,
+df <- read.topas.spectrum(pn.full,
                           fn.main,
                           fn.scorer="Fluence-spectrum",
                           what="Fluence",
