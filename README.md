@@ -1,5 +1,5 @@
 # clanTopas
-R package for reading output from Topas (TopasMC.org) Monte-Carlo simulations of ionizing radiation. 
+R package for reading output from Topas (TopasMC.org) Monte-Carlo simulations of ionizing radiation transport and dosimetry. 
 
 Main functions for reading scorer files produced by Topas.  
 ```
@@ -9,7 +9,7 @@ read.topas.spectrum
 read.topas.phasespace
 read.topas.demo (examples)
 ```
-Details of how to install the clanTopa package is given at the end of this readme file.
+Details of how to install the clanTopas package is given at the end of this readme file.
 
 Additional Topas tools are available here: https://github.com/claus-e-andersen/TopasTools
 
