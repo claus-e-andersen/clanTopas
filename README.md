@@ -1,9 +1,10 @@
 # clanTopas
-R package for Topas (TopasMC.org)
+R package for reading output from Topas (TopasMC.org) Monte-Carlo simulations of ionizing radiation. 
 
 Main functions for reading scorer files produced by Topas
 ```
-read.topas.xyz
+read.topas.simple (no binning)
+read.topas.xyz (for a binned scorer)
 read.topas.spectrum
 read.topas.phasespace
 ```
