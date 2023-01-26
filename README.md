@@ -19,11 +19,7 @@ df <-read.topas.phasespace(pn.full=pn.full,
                            fn.main=fn.main, 
                            fn.scorer="Phasespace1",
                            what="Phasespace",
-                           what2="Phasespace, z.minus",
-                           get.col.names.from.header=TRUE, 
-                           number.of.columns=28,
-                           include.meta.data =TRUE,
-                           verbose=!TRUE)
+                           what2="Phasespace, z.minus")
 ```                          
 
 How to read two binned scorer files and then combine the results?
@@ -36,20 +32,14 @@ df1 <-read.topas.xyz(pn.full=pn.full,
                      fn.main=fn.main,
                      fn.scorer="DoseScorer1",
                      what="Dose",
-                     what2="Dose",
-                     get.col.names.from.header=TRUE,
-                     include.meta.data=TRUE,
-                     verbose=FALSE)
+                     what2="Dose")
 
 
 df2 <-read.topas.xyz(pn.full=pn.full,
                      fn.main=fn.main,
                      fn.scorer="FluenceScorer1",
                      what="Fluence",
-                     what2="Fluence, prim. electrons",
-                     get.col.names.from.header=TRUE,
-                     include.meta.data=TRUE,
-                     verbose=FALSE)
+                     what2="Fluence, prim. electrons")
 df <- rbind(df1,df2)
 ```
 
@@ -58,15 +48,11 @@ How to read a spectrum file?
 ```
 pn.full <- "~//topas//examples//clan//linac-spectra-Ali-and-Rogers//"
 fn.main <- "linac-spectra-test-10001-"
-df1 <-read.topas.spectrum(pn.full=pn.full,
+df <-read.topas.spectrum(pn.full=pn.full,
                           fn.main=fn.main,
                           fn.scorer="Fluence-spectrum",
                           what="Dose",
-                          what2="Dose",
-                          get.col.names.from.header=TRUE,
-                          scorer.names.default=c("Count_in_Bin","Mean","Sum"),
-                          include.meta.data=TRUE,
-                          verbose=FALSE)
+                          what2="Dose")
 
 ```
 
