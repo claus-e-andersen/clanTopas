@@ -7,6 +7,7 @@ read.topas.simple (no binning)
 read.topas.xyz (for a binned scorer)
 read.topas.spectrum
 read.topas.phasespace
+read.topas.demo (examples)
 ```
 Details of how to install the clanTopa package is given at the end of this readme file.
 
@@ -20,7 +21,7 @@ df <-read.topas.phasespace(pn.full,
                            fn.main, 
                            fn.scorer="Phasespace1",
                            what="Phasespace",
-                           what2="Phasespace, z.minus")
+                           what2="Phasespace.z.minus")
 ```                          
 
 ## How to read two binned scorer files and then combine the results?
@@ -33,14 +34,15 @@ df1 <-read.topas.xyz(pn.full,
                      fn.main,
                      fn.scorer="DoseScorer1",
                      what="Dose",
-                     what2="Dose-to-medium")
+                     what2="Dose.at.isocenter")
 
 
 df2 <-read.topas.xyz(pn.full,
                      fn.main,
-                     fn.scorer="FluenceScorer1",
-                     what="Fluence",
-                     what2="Fluence, prim. electrons")
+                     fn.scorer="DoseScorer2",
+                     what="Dose",
+                     what2="Dose.at.10cm")
+
 df <- rbind(df1,df2)
 ```
 
@@ -53,8 +55,8 @@ fn.main <- "linac-spectra-test-10001-"
 df <-read.topas.spectrum(pn.full,
                           fn.main,
                           fn.scorer="Fluence-spectrum",
-                          what="Dose",
-                          what2="Dose")
+                          what="Fluence",
+                          what2="Fluence.electrons.primaries")
 
 ```
 
