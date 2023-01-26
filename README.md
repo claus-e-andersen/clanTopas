@@ -10,7 +10,7 @@ read.topas.phasespace
 Details of how to install the package is given at the end of this readme file.
 ```
 
-How to read a phasespace file?
+## How to read a phasespace file?
 
 ```
 pn.full <- "~//topas//examples//clan//Four-pi-detector//"
@@ -22,7 +22,7 @@ df <-read.topas.phasespace(pn.full=pn.full,
                            what2="Phasespace, z.minus")
 ```                          
 
-How to read two binned scorer files and then combine the results?
+## How to read two binned scorer files and then combine the results?
 
 ```
 pn.full <- "~//topas//examples//clan//"
@@ -43,7 +43,7 @@ df2 <-read.topas.xyz(pn.full=pn.full,
 df <- rbind(df1,df2)
 ```
 
-How to read a spectrum file?
+## How to read a spectrum file?
 
 ```
 pn.full <- "~//topas//examples//clan//linac-spectra-Ali-and-Rogers//"
@@ -56,7 +56,7 @@ df <-read.topas.spectrum(pn.full=pn.full,
 
 ```
 
-Installation in R or Rstudio
+## Installation in R or Rstudio
 
 The library can be loaded into R using the install_github command which is in the devtools package. So you first need to ascertain that you have this package and you need to load it with the library command:
 
