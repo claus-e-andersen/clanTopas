@@ -14,7 +14,7 @@ Details of how to install the clanTopa package is given at the end of this readm
 ## Main functionality
 - The functions can extract field names automatecially from the Topas output.
 - The functions facilitate the use of meta data to combine results from different runs or scorers.
-- The functions simplifies the naming of fields to a more concise form.
+- The functions simplify the naming of fields to a more concise form.
 
 ## How to read a phasespace file?
 
