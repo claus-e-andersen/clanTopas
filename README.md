@@ -15,6 +15,7 @@ Details of how to install the clanTopa package is given at the end of this readm
 ```
 pn.full <- "~//topas//examples//clan//Four-pi-detector//"
 fn.main <- "Four-pi-detector-10011-"
+
 df <-read.topas.phasespace(pn.full, 
                            fn.main, 
                            fn.scorer="Phasespace1",
@@ -48,6 +49,7 @@ df <- rbind(df1,df2)
 ```
 pn.full <- "~//topas//examples//clan//linac-spectra-Ali-and-Rogers//"
 fn.main <- "linac-spectra-test-10001-"
+
 df <-read.topas.spectrum(pn.full,
                           fn.main,
                           fn.scorer="Fluence-spectrum",
