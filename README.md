@@ -1,7 +1,7 @@
 # clanTopas
 R package for reading output from Topas (TopasMC.org) Monte-Carlo simulations of ionizing radiation. 
 
-Main functions for reading scorer files produced by Topas
+Main functions for reading scorer files produced by Topas.  
 ```
 read.topas.simple (no binning)
 read.topas.xyz (for a binned scorer)
@@ -10,6 +10,11 @@ read.topas.phasespace
 read.topas.demo (examples)
 ```
 Details of how to install the clanTopa package is given at the end of this readme file.
+
+## Main functionality
+- The functions can extract field names automatecially from the Topas output.
+- The functions facilitate the use of meta data to combine results from different runs or scorers.
+- The functions simplifies the naming of fields to a more concise form.
 
 ## How to read a phasespace file?
 
