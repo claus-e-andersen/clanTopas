@@ -15,8 +15,8 @@ Details of how to install the clanTopa package is given at the end of this readm
 ```
 pn.full <- "~//topas//examples//clan//Four-pi-detector//"
 fn.main <- "Four-pi-detector-10011-"
-df <-read.topas.phasespace(pn.full=pn.full, 
-                           fn.main=fn.main, 
+df <-read.topas.phasespace(pn.full, 
+                           fn.main, 
                            fn.scorer="Phasespace1",
                            what="Phasespace",
                            what2="Phasespace, z.minus")
@@ -28,15 +28,15 @@ df <-read.topas.phasespace(pn.full=pn.full,
 pn.full <- "~//topas//examples//clan//"
 fn.main <- "sandbox-10012-"
 
-df1 <-read.topas.xyz(pn.full=pn.full,
-                     fn.main=fn.main,
+df1 <-read.topas.xyz(pn.full,
+                     fn.main,
                      fn.scorer="DoseScorer1",
                      what="Dose",
                      what2="Dose-to-medium")
 
 
-df2 <-read.topas.xyz(pn.full=pn.full,
-                     fn.main=fn.main,
+df2 <-read.topas.xyz(pn.full,
+                     fn.main,
                      fn.scorer="FluenceScorer1",
                      what="Fluence",
                      what2="Fluence, prim. electrons")
@@ -48,8 +48,8 @@ df <- rbind(df1,df2)
 ```
 pn.full <- "~//topas//examples//clan//linac-spectra-Ali-and-Rogers//"
 fn.main <- "linac-spectra-test-10001-"
-df <-read.topas.spectrum(pn.full=pn.full,
-                          fn.main=fn.main,
+df <-read.topas.spectrum(pn.full,
+                          fn.main,
                           fn.scorer="Fluence-spectrum",
                           what="Dose",
                           what2="Dose")
