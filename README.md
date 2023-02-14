@@ -72,6 +72,11 @@ df <- rbind(df1,df2)
 ## How to read a spectrum file?
 
 ```
+# Assuming the files are called:
+#   linac-spectra-test-10001-Fluence-spectrum.csv
+# placed in some topas folder called ... linac-spectra-Ali-and-Rogers (see pn.full),
+# then you can read the data into a data frame as follows:
+
 pn.full <- "~//topas//examples//clan//linac-spectra-Ali-and-Rogers//"
 fn.main <- "linac-spectra-test-10001-"
 
@@ -81,6 +86,7 @@ df <- read.topas.spectrum(pn.full,
                           what="Fluence",
                           what2="Fluence.electrons.primaries")
 
+# The meta data what and what2 are just for your own use, and can be ignored if you do not want them.                           
 ```
 
 ## Installation in R or Rstudio
