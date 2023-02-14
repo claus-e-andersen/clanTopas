@@ -35,6 +35,8 @@ df <-read.topas.phasespace(pn.full,
                            fn.scorer="Phasespace1",
                            what="Phasespace",
                            what2="Phasespace.z.minus")
+                           
+# The meta data what and what2 are just for your own use, and can be ignored if you do not want them.                           
 ```                          
 
 ## How to read two binned scorer files and then combine the results?
@@ -63,6 +65,8 @@ df2 <- read.topas.xyz(pn.full,
                       what2="Dose.at.10cm")
 
 df <- rbind(df1,df2)
+
+# The meta data what and what2 are just for your own use, and can be ignored if you do not want them.                           
 ```
 
 ## How to read a spectrum file?
