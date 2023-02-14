@@ -21,6 +21,9 @@ Additional Topas tools are available here: https://github.com/claus-e-andersen/T
 ## How to read a phasespace file?
 
 ```
+# Assuming the phasespace file is called:
+# Four-pi-detector-10011-Phasespace1
+
 pn.full <- "~//topas//examples//clan//Four-pi-detector//"
 fn.main <- "Four-pi-detector-10011-"
 
