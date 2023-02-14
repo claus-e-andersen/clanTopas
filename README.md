@@ -103,6 +103,12 @@ You will also need the clanTools package:
 
 ```
 install_github("claus-e-andersen/clanTools")
+library(clanTools)
 ```
 
 plus the stringr and dplyr packages.
+
+'''
+library(stringr)
+library(dplyr)
+'''
