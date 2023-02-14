@@ -37,7 +37,7 @@ df <-read.topas.phasespace(pn.full,
                            what2="Phasespace.z.minus")
 
 # Alternatively, you can do the same thing without splitting the file name into fn.main
-and fn.scorer. This can be done as follows:
+# and fn.scorer. This can be done as follows:
 
 df <-read.topas.phasespace(pn.full, 
                            "", 
