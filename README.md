@@ -45,7 +45,8 @@ df <-read.topas.phasespace(pn.full,
                            what="Phasespace",
                            what2="Phasespace.z.minus")
 
-# The meta data what and what2 are just for your own use, and can be ignored if you do not want them.                           
+# The meta data what and what2 are just for your own use, and can be ignored if 
+# you do not want them.                           
 ```                          
 
 Example of output from the first 3 lines of a data frame read with the read.topas.phasespace function.
