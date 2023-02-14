@@ -48,6 +48,31 @@ df <-read.topas.phasespace(pn.full,
 # The meta data what and what2 are just for your own use, and can be ignored if you do not want them.                           
 ```                          
 
+Example of output from the first 3 lines of a df:
+```
+  Pos.X.cm Pos.Y.cm  Pos.Z.cm Dir.Cosine.X Dir.Cosine.Y Energy.MeV Weight Particle.Type
+1  15.0753  8.03777 -10.39860     0.753764     0.401888   0.510999      1            22
+2 -15.0753 -8.03777  10.39860    -0.753764    -0.401888   0.510999      1            22
+3  18.8698  6.06366  -2.67614     0.943491     0.303183   0.510999      1            22
+  Flag.Third.Dir.Cosine.Neg Flag.First.Scored Time.of.Flight.ns Run.ID Event.ID Track.ID
+1                         1                 1          0.670464      0       40        3
+2                         0                 0          0.670464      0       40        2
+3                         1                 1          0.670464      0       41        3
+  Parent.ID Charge Creator.Process.Name Init.KE.MeV Vertex.Pos.X.cm Vertex.Pos.Y.cm
+1         1      0              annihil    0.510999     -5.6355e-08     4.82672e-08
+2         1      0              annihil    0.510999     -5.6355e-08     4.82672e-08
+3         1      0              annihil    0.510999     -4.9940e-08    -2.86780e-08
+  Vertex.Pos.Z.cm Init.Dir.Cosine.X Init.Dir.Cosine.Y Init.Dir.Cosine.Z Seed.Part.1
+1     3.07908e-08          0.753764          0.401888         -0.519928  1878463799
+2     3.07908e-08         -0.753764         -0.401888          0.519928  1878463799
+3     3.07908e-08          0.943491          0.303183         -0.133807  1878463799
+  Seed.Part.2 Seed.Part.3 Seed.Part.4                 fn.main   fn.scorer what what2
+1           1    61314202     8717185 Four-pi-detector-10000- Phasespace1 Dose  Dose
+2           1    61314202     8717185 Four-pi-detector-10000- Phasespace1 Dose  Dose
+3           1    46770376    20239334 Four-pi-detector-10000- Phasespace1 Dose  Dose
+```
+
+
 ## How to read two binned scorer files and then combine the results?
 
 ```
