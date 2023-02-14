@@ -106,7 +106,7 @@ install_github("claus-e-andersen/clanTools")
 library(clanTools)
 ```
 
-plus the stringr and dplyr packages.
+plus the stringr and dplyr packages:
 
 ```
 library(stringr)
