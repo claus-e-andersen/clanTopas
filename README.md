@@ -35,7 +35,16 @@ df <-read.topas.phasespace(pn.full,
                            fn.scorer="Phasespace1",
                            what="Phasespace",
                            what2="Phasespace.z.minus")
-                           
+
+# Alternatively, you can do the same thing without splitting the file name into fn.main
+and fn.scorer. This can be done as follows:
+
+df <-read.topas.phasespace(pn.full, 
+                           "", 
+                           fn.scorer="Four-pi-detector-10011-Phasespace1",
+                           what="Phasespace",
+                           what2="Phasespace.z.minus")
+
 # The meta data what and what2 are just for your own use, and can be ignored if you do not want them.                           
 ```                          
 
