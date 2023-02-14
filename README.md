@@ -48,7 +48,7 @@ df <-read.topas.phasespace(pn.full,
 # The meta data what and what2 are just for your own use, and can be ignored if you do not want them.                           
 ```                          
 
-Example of output from the first 3 lines of a df:
+Example of output from the first 3 lines of a data frame read with the read.topas.phasespace function:
 ```
   Pos.X.cm Pos.Y.cm  Pos.Z.cm Dir.Cosine.X Dir.Cosine.Y Energy.MeV Weight Particle.Type
 1  15.0753  8.03777 -10.39860     0.753764     0.401888   0.510999      1            22
