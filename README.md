@@ -24,7 +24,7 @@ Additional Topas tools are available here: https://github.com/claus-e-andersen/T
 # Assuming the phasespace file and header are called:
 #   Four-pi-detector-10011-Phasespace1.phsp
 #   Four-pi-detector-10011-Phasespace1.header
-# placed in some topas folder called ... Four-pi-detector,
+# placed in some topas folder called ... Four-pi-detector (see pn.full),
 # then you can read the data into a data frame as follows:
 
 pn.full <- "~//topas//examples//clan//Four-pi-detector//"
@@ -40,6 +40,12 @@ df <-read.topas.phasespace(pn.full,
 ## How to read two binned scorer files and then combine the results?
 
 ```
+# Assuming the files are called:
+#   sandbox-10012-DoseScorer1.csv
+#   sandbox-10012-DoseScorer2.csv
+# placed in some topas folder called ... clan (see pn.full),
+# then you can read the data into a data frame as follows:
+
 pn.full <- "~//topas//examples//clan//"
 fn.main <- "sandbox-10012-"
 
