@@ -72,7 +72,7 @@ df <- rbind(df1,df2)
 ## How to read a spectrum file?
 
 ```
-# Assuming the files are called:
+# Assuming the file is called:
 #   linac-spectra-test-10001-Fluence-spectrum.csv
 # placed in some topas folder called ... linac-spectra-Ali-and-Rogers (see pn.full),
 # then you can read the data into a data frame as follows:
