@@ -112,7 +112,7 @@ plus the stringr and dplyr packages.
 library(stringr)
 library(dplyr)
 ```
-if you do already have these packes you will first need to install them:
+if you do already have these packages you will first need to install them:
 ```
 install.packages("stringr")
 install.packages("dplyr")
