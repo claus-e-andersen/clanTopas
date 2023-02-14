@@ -108,7 +108,7 @@ library(clanTools)
 
 plus the stringr and dplyr packages.
 
-'''
+````
 library(stringr)
 library(dplyr)
-'''
+```
