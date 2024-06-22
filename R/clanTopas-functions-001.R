@@ -455,12 +455,16 @@ read.topas.spectrum <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1"
   deltaE <- E.max/N.bins
   EE.min <- seq(0,E.max-deltaE,length=N.bins)
   EE.max <- seq(deltaE,E.max,length=N.bins)
-  EE.min <- c(0,0,EE.min,0)
-  EE.max <- c(0,0,EE.max,0)
+  #EE.min <- c(0,0,EE.min,0)
+  #EE.max <- c(0,0,EE.max,0)
+
+  EE.min <- c(0,EE.min,0)
+  EE.max <- c(0,EE.max,0)
+
   yy <- unlist(xx)
   names(yy) <- NULL
   yy
-  ii <- rep(1:N.col,N.bins+3)
+  ii <- rep(1:N.col,N.bins+2)
 
   # df0 <-  data.frame(E.min=EE.min,E.max=EE.max,counts=yy[ii==2],
   #                    sum=yy[ii==2], mean=yy[ii==3], sd=yy[ii==4], N=yy[ii==5])
