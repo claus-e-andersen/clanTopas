@@ -466,7 +466,10 @@ read.topas.spectrum <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1"
   yy
   ii <- rep(1:N.col,N.bins+2)
 
-if(verbose){
+  # This is not is probably wrong, but is ascertains that yy has the correct length
+  yy <- yy[1:length(ii)]
+
+  if(verbose){
 print(EE.min)
 print(EE.max)
 print(yy)
