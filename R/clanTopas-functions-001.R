@@ -466,9 +466,23 @@ read.topas.spectrum <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1"
   yy
   ii <- rep(1:N.col,N.bins+2)
 
-  # This is not is probably wrong, but is ascertains that yy has the correct length
+#################################################################################
+
+  # Sometimes there are one extra non-useful bin included.
+  # Binned by incident track energy :
+  # First bin is underflow, next to last bin is overflow, last bin is for case of no incident track.
+
+  # Binned by pre-step energy:
+  # First bin is underflow, last bin is overflow.
+
+  # To ascertains that yy has the correct length in all cases we do:
+
   yy <- yy[1:length(ii)]
 
+  # This ignores the last bin is for case of no incident track.
+
+ #################################################################################3
+  
   if(verbose){
 print(EE.min)
 print(EE.max)
