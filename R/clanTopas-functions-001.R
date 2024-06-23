@@ -466,13 +466,28 @@ read.topas.spectrum <- function(pn.full="~//",fn.main="",fn.scorer="DoseScorer1"
   yy
   ii <- rep(1:N.col,N.bins+2)
 
+if(verbose){
+print(EE.min)
+print(EE.max)
+print(yy)
+print(length(EE.min)) 
+print(length(EE.max))
+print(length(ii)) 
+print(length(yy))   
+}
+  
   # df0 <-  data.frame(E.min=EE.min,E.max=EE.max,counts=yy[ii==2],
   #                    sum=yy[ii==2], mean=yy[ii==3], sd=yy[ii==4], N=yy[ii==5])
   # df0 <-  data.frame(E.min=EE.min,E.max=EE.max, mean=yy[ii==1])
 
    txt <- paste(scorer.names,"=yy[ii==",1:length(scorer.names),"]",sep="",collapse=", ")
    txt <- paste("data.frame(E.min=EE.min, E.max=EE.max,",txt,")",sep="")
-   df0 <- eval(parse(text=txt))
+   
+  if(verbose){
+    print(txt)
+    }
+  
+  df0 <- eval(parse(text=txt))
 
   ###############
   if(get.col.names.from.header){names(xx) <- scorer.names}
